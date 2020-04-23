@@ -20,5 +20,6 @@ public class App
     	//System.out.println(reader.getDocxTextContent("src/documents/Ejemplodoc.doc"));
     	//System.out.println(reader.getPDFContent("src/documents/ejemplopdf.pdf"));
     	
+    	
     }
 }

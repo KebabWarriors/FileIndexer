@@ -22,7 +22,7 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 
 public class Reader {
-	private ArrayList<String[]> documentsPath;
+	private ArrayList<String[]> documents = new ArrayList<String[]>();
 	/**
 	 * 
 	 * @param folder
@@ -35,10 +35,16 @@ public class Reader {
 	        if (fileEntry.isDirectory()) {
 	        	readDocumentsPath(fileEntry);
 	        } else {
-	            System.out.println(fileEntry.getPath());
+	        	this.addDocumentToArray(new String[]{
+	        			fileEntry.getPath(),
+	        			fileEntry.getName(),
+	        			this.getFileExtension(fileEntry),
+	        			this.getGeneralDocumentsContent(fileEntry.getPath(), this.getFileExtension(fileEntry))
+	        		});
+	            /*System.out.println(fileEntry.getPath());
 	            System.out.println(fileEntry.getName());
 	            System.out.println(this.getFileExtension(fileEntry));
-	            this.getGeneralDocumentsContent(fileEntry.getPath(), this.getFileExtension(fileEntry));
+	            this.getGeneralDocumentsContent(fileEntry.getPath(), this.getFileExtension(fileEntry));*/
 	        }
 	    }
 	}
@@ -49,37 +55,37 @@ public class Reader {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public void getGeneralDocumentsContent(String path, String extension) throws FileNotFoundException, IOException {
-		//String content ="";
+	public String getGeneralDocumentsContent(String path, String extension) throws FileNotFoundException, IOException {
+		String content ="";
 		switch(extension) {
 		case ".docx":
-			System.out.println(this.getDocxTextContent(path));
+			content = this.getDocxTextContent(path);
 			break;
 		case ".txt":
-			System.out.println(this.getPlainTextContent(path));
+			content = this.getPlainTextContent(path);
 			break;
 		case ".pdf":
-			System.out.println(this.getPDFContent(path));
+			content = this.getPDFContent(path);
 			break;
 		default:
-			
+			//has to send a log 
 			break;
 		}
-		//return content;
+		return content;
 	}
 	/**
 	 * 
 	 * @param path
 	 */
-	public void addPathToArray(String[] path) {
-		this.documentsPath.add(path);
+	public void addDocumentToArray(String[] documents) {
+		this.documents.add(documents);
 	}
 	/**
 	 * 
 	 * @return
 	 */
-	public ArrayList<String[]> getAllDocumentSPath() {
-		return this.documentsPath;
+	public ArrayList<String[]> getAllDocuments() {
+		return this.documents;
 	}
 	/**
 	 * 
