@@ -15,7 +15,10 @@ public class App
     	final File folder = new File("src/documents");
     	Reader reader = new Reader();
     	reader.readDocumentsPath(folder);
-    	System.out.println(reader.getPlainTextContent("src/documents/ejemplo2.txt"));
+    	//System.out.println(reader.getPlainTextContent("src/documents/ejemplo2.txt"));
+    	//System.out.println(reader.getDocxTextContent("src/documents/EjemploOffice.docx"));
+    	//System.out.println(reader.getDocxTextContent("src/documents/Ejemplodoc.doc"));
+    	//System.out.println(reader.getPDFContent("src/documents/ejemplopdf.pdf"));
     	
     }
 }
