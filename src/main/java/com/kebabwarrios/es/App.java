@@ -17,9 +17,13 @@ public class App
     	reader.readDocumentsPath(folder);
     	FileIndexer fileIndexer = new FileIndexer(reader.getAllDocuments());
     	
-    	for(String nuevo : fileIndexer.convertTextIntoWordsArray("Hello My name is Victor")) {
-    		System.out.println(nuevo);
-    	}
+    	System.out.println(fileIndexer.preProcessingText("HEY! this is a try/?///"));
+    	
+		/*
+		 * for(String nuevo :
+		 * fileIndexer.convertTextIntoWordsArray("Hello My name is VIctor")) {
+		 * System.out.println(nuevo); }
+		 */
     	
     }
 }

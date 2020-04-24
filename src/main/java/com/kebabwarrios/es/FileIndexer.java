@@ -15,11 +15,11 @@ public class FileIndexer {
 	
 	public String preProcessingText(String oldText) {
 		String newText = "";
-		newText = oldText.replaceAll(this.regularExpression, "");
+		newText = oldText.replaceAll(this.regularExpression, " ");
 		return newText;
 	}
 	public String[] convertTextIntoWordsArray(String textToConvert) {
-		String[] wordsArray = textToConvert.split(" ");
+		String[] wordsArray = textToConvert.toLowerCase().split(" ");
 		return wordsArray;
 		
 	}
