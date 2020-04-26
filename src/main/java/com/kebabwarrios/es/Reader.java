@@ -29,8 +29,32 @@ public class Reader {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-	public void readDocumentsPath(final File folder) throws FileNotFoundException, IOException {
+	public void readDocumentsPath(String path) throws FileNotFoundException, IOException {
 		String[] files;
+		final File folder = new File(path);
+	    for (final File fileEntry : folder.listFiles()) {
+	        if (fileEntry.isDirectory()) {
+	        	readDocumentsPath(fileEntry);
+	        } else {
+	        	this.addDocumentToArray(new String[]{
+	        			fileEntry.getPath(),
+	        			fileEntry.getName(),
+	        			this.getFileExtension(fileEntry),
+	        			this.getGeneralDocumentsContent(fileEntry.getPath(), this.getFileExtension(fileEntry))
+	        		});
+	            /*System.out.println(fileEntry.getPath());
+	            System.out.println(fileEntry.getName());
+	            System.out.println(this.getFileExtension(fileEntry));
+	            this.getGeneralDocumentsContent(fileEntry.getPath(), this.getFileExtension(fileEntry));*/
+	        }
+	    }
+	}
+	/*
+	 * Override with diferent parameter
+	 */
+	public void readDocumentsPath(File folder) throws FileNotFoundException, IOException {
+		String[] files;
+		
 	    for (final File fileEntry : folder.listFiles()) {
 	        if (fileEntry.isDirectory()) {
 	        	readDocumentsPath(fileEntry);
