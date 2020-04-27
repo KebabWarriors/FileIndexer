@@ -44,7 +44,8 @@ public class App
 		 * System.out.println(valor); } }); });
 		 */
     	
-    	SearchEngine.searchByQuery("Abraham", fileIndexer.getIndexedDocumentsMap());
+    	SearchEngine.searchByQuery("Abraham es una obra ", fileIndexer.getIndexedDocumentsMap());
+    	
     	//System.out.println( fileIndexer.tfIdf(new String[] {"los" ,"vikingos" ,"explorando" ,"las" ,"americas" ,"en", "las" ,"barcas "}, documentsMap, "las"));
 		/*
 		 * for(String nuevo :
