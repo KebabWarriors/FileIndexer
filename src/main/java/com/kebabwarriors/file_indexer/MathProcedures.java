@@ -1,7 +1,9 @@
-package com.kebabwarrios.es;
+package com.kebabwarriors.file_indexer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public final class MathProcedures {
   /**
@@ -38,7 +40,7 @@ public final class MathProcedures {
         }
       }
     }
-
+    
     return idfValidator(docs.size(), total); 
   }
 
@@ -56,19 +58,27 @@ public final class MathProcedures {
     return (tf(doc, term) * idf(docs, term));
   }
   
-  public static Double[] matrixMultiplication(Double[] vectorOne, Double[] vectorTwo) {
-    ArrayList<Double> result = new ArrayList<>();
+  public static double cosineSimilarity(Double[] vectorOne, Double[] vectorTwo) {
+    List<Double> vectorOneList = new ArrayList<>(Arrays.asList(vectorOne));
+    List<Double> vectorTwoList = new ArrayList<>(Arrays.asList(vectorTwo));
+    Double dotProduct = 0.0;
+    Double normalVectorOne = 0.0;
+    Double normalVectorTwo = 0.0;
     
-    if (vectorOne.length >= vectorOne.length) {
-      for (int x = 0; x < vectorOne.length; x++) {
-        result.add((vectorOne[x] * vectorTwo[x % vectorTwo.length]));
-      }
+    if (vectorOneList.size() > vectorTwoList.size()) {
+      while (vectorOneList.size() != vectorTwoList.size())
+        vectorTwoList.add((double) 0);
     } else {
-      for (int x = 0; x < vectorTwo.length; x++) {
-        result.add((vectorTwo[x] * vectorOne[x % vectorOne.length]));
-      }
+      while (vectorOneList.size() != vectorTwoList.size())
+        vectorOneList.add((double) 0);
     }
     
-    return result.toArray(new Double[result.size()]);
+    for (int x = 0; x < vectorOne.length; x++) {
+      dotProduct = vectorOneList.get(x) * vectorTwoList.get(x);
+      normalVectorOne += Math.pow(vectorOneList.get(x), 2);
+      normalVectorTwo += Math.pow(vectorTwoList.get(x), 2);
+    }
+    
+    return dotProduct / (Math.sqrt(normalVectorOne) * Math.sqrt(normalVectorTwo));
   }
 }

@@ -2,13 +2,12 @@ package indexer;
 
 import static org.junit.Assert.assertTrue;
 
-import com.kebabwarrios.es.*;
-import com.kebabwarrios.es.FileIndexer;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.Test;
+
+import com.kebabwarriors.file_indexer.*;
 
 /**
  * Unit test for simple App.

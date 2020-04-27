@@ -1,4 +1,4 @@
-package com.kebabwarrios.es;
+package com.kebabwarriors.file_indexer;
 
 import java.util.ArrayList;
 import java.util.HashMap;

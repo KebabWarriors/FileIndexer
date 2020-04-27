@@ -1,4 +1,4 @@
-package com.kebabwarrios.es;
+package com.kebabwarriors.file_indexer;
 
 public final class Preprocessing {
   public static String[] convertTextIntoWordsArray(String textToConvert) {
