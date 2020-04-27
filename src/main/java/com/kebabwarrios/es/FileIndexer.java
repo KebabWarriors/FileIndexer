@@ -14,6 +14,12 @@ public class FileIndexer {
 	HashMap<String, HashMap<String[], Double[]> > indexedDocumentsMap = new HashMap<>();
 	
 	
+	/*
+	 * This constructor works when we need some functions but not to index a thing
+	 */
+	public FileIndexer() {
+		
+	}
 	/**
 	 * 
 	 * @param documents
@@ -23,12 +29,7 @@ public class FileIndexer {
 		this.setHashMapDocuments(this.documents);
 		this.indexDocuments(this.documentsMap);
 	}
-	/*
-	 * This constructor works when we need some functions but not to index a thing
-	 */
-	public FileIndexer() {
-		
-	}
+	
 	/**
 	 * 
 	 * @param documents
