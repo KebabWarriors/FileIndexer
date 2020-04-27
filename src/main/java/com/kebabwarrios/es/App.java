@@ -38,13 +38,13 @@ public class App
 		 * new String[] {"lo" ,"vikingos","ls" ,"ricas" ,"losasdf" });
 		 * fileIndexer.indexDocuments(documentsMap);
 		 */
-    	fileIndexer.getIndexedDocumentsMap().forEach((key,value) -> {
-    		value.forEach((key2,value2)->{
-    			for(Double valor : value2) {
-    				System.out.println(valor);
-    			}
-    		});
-    	});
+		/*
+		 * fileIndexer.getIndexedDocumentsMap().forEach((key,value) -> {
+		 * value.forEach((key2,value2)->{ for(Double valor : value2) {
+		 * System.out.println(valor); } }); });
+		 */
+    	
+    	SearchEngine.searchByQuery("Abraham", fileIndexer.getIndexedDocumentsMap());
     	//System.out.println( fileIndexer.tfIdf(new String[] {"los" ,"vikingos" ,"explorando" ,"las" ,"americas" ,"en", "las" ,"barcas "}, documentsMap, "las"));
 		/*
 		 * for(String nuevo :

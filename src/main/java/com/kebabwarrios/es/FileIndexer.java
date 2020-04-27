@@ -23,6 +23,12 @@ public class FileIndexer {
 		this.setHashMapDocuments(this.documents);
 		this.indexDocuments(this.documentsMap);
 	}
+	/*
+	 * This constructor works when we need some functions but not to index a thing
+	 */
+	public FileIndexer() {
+		
+	}
 	/**
 	 * 
 	 * @param documents
@@ -163,9 +169,9 @@ public class FileIndexer {
 	   * @param wordsValue
 	   */
 	  public void addToIndexedDocumentsMap(String document, String[] documentWords, Double[] wordsValue) {
-		  HashMap<String[], Double[]> inner = new HashMap<String[], Double[]>();
-		  inner.put(documentWords, wordsValue);
-		  this.indexedDocumentsMap.put(document, inner);
+		  HashMap<String[], Double[]> innerHash = new HashMap<String[], Double[]>();
+		  innerHash.put(documentWords, wordsValue);
+		  this.indexedDocumentsMap.put(document, innerHash);
 	  }
 	 /**
 	  * 
