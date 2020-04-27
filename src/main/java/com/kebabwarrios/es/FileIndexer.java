@@ -9,7 +9,7 @@ public class FileIndexer {
   private ArrayList<String[]> documents = new ArrayList<String[]>();
 
   HashMap<String, String[]> documentsMap = new HashMap<String, String[]>();
-  HashMap<String, HashMap<String[], Double[]> > indexedDocumentsMap = new HashMap<>();
+  HashMap<String, HashMap<String[], Double[]>> indexedDocumentsMap = new HashMap<>();
 
   /**
    * 
@@ -51,7 +51,7 @@ public class FileIndexer {
    */
   private void indexDocuments(HashMap<String, String[]> documents ){
     Double[] wordsValue;
-    String[] documentsName = this.getDocumentsName(documents);
+    String[] documentsName = getDocumentsName(documents);
 
     int iterator = 0, iteratorNames = 0;
 
@@ -76,7 +76,7 @@ public class FileIndexer {
    * @param documents
    * @return
    */
-  private String[] getDocumentsName(HashMap<String, String[]> documents) {
+  public static String[] getDocumentsName(HashMap<String, String[]> documents) {
     String[] names = new String[documents.size()];
 
     int iterator = 0;
@@ -109,5 +109,9 @@ public class FileIndexer {
    */
   public HashMap<String, HashMap<String[], Double[]>> getIndexedDocumentsMap(){
     return this.indexedDocumentsMap;
+  }
+  
+  public HashMap<String, String[]> getDocumentsMap() {
+    return this.documentsMap;
   }
 }
