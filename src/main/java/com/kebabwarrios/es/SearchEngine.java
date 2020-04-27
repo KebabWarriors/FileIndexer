@@ -11,6 +11,7 @@ public class SearchEngine {
 	 * @param documents
 	 */
 	public static void searchByQuery(String query, HashMap<String, HashMap<String[],Double[]>> documents) {
+		documentsOrder = new HashMap<String, HashMap<String, Double>>();
 		FileIndexer processor = new FileIndexer();
 		String[] arrayQuery = processor.convertTextIntoWordsArray(processor.preProcessingText(query));
 		for(String word : arrayQuery) {
