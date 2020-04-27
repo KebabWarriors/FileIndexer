@@ -63,16 +63,18 @@ public class AppTest
 		 documentsMap.put("TercerDocumento 2", new String[] { "vingos","las" ,"acas" ,"losasdf"}); 
 		 documentsMap.put("TercerDocumento 3",new String[] {"lo" ,"vikingos","ls" ,"ricas" ,"losasdf" });
 		 processor.indexDocuments(documentsMap);
-		 double[] valores = new double[processor.getIndexedDocumentsMap().size()];
-		 int[] i = {0};
-    	 processor.getIndexedDocumentsMap().forEach((key,value) -> {
-			 value.forEach((key2,value2)->{ 
-				 for(Double valor : value2) {
-					 //this.i++; 
-				 } 
-			}); 
-		});
-    	 assertTrue( true );
+		 double total = 0;
+		 for(String document : processor.getIndexedDocumentsMap().keySet()) {
+			 for(String[] words : processor.getIndexedDocumentsMap().get(document).keySet()) {
+				 Double[] values = processor.getIndexedDocumentsMap().get(document).get(words);
+				 for(int i=0;i<=processor.getIndexedDocumentsMap().get(document).get(words).length-1;i++) {
+					 total += values[i]; 
+				 }
+				
+			 }
+		 }
+    	 
+    	 assertTrue( total == 11.199579834337861 );
     }
     
 }
