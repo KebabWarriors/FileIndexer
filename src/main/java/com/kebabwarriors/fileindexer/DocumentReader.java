@@ -112,7 +112,7 @@ public class DocumentReader {
    * 
    * @param path
    */
-  public void addDocumentToArray(String[] documents) {
+  private void addDocumentToArray(String[] documents) {
     this.documents.add(documents);
   }
 
@@ -146,7 +146,7 @@ public class DocumentReader {
    * @throws FileNotFoundException
    * @throws IOException
    */
-  public String getPlainTextContent(String path) throws FileNotFoundException, IOException {
+  private String getPlainTextContent(String path) throws FileNotFoundException, IOException {
     String text;
 
     try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -171,7 +171,7 @@ public class DocumentReader {
    * @param path
    * @return
    */
-  public String getDocxTextContent(String path) {
+  private String getDocxTextContent(String path) {
     String docText = "";
 
     try {
@@ -194,7 +194,7 @@ public class DocumentReader {
    * @param path
    * @return
    */
-  public String getDocTextContent(String path) {
+  private String getDocTextContent(String path) {
     String docText = "";
 
     try {
@@ -224,7 +224,7 @@ public class DocumentReader {
    * @return
    * @throws IOException 
    */
-  public String getPDFContent(String path) throws IOException {
+  private String getPDFContent(String path) throws IOException {
     String content = "";
     PDDocument document = PDDocument.load(new File(path));
 
