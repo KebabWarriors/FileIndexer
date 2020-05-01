@@ -11,16 +11,36 @@
     <plugins>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.2</version>
+        <version>3.0.0-M4</version>
       </plugin>
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.22.2</version>
+        <version>3.0.0-M4</version>
       </plugin>
       <plugin>
       	<groupId>org.apache.maven.plugins</groupId>
       	<artifactId>maven-shade-plugin</artifactId>
       	<version>3.2.3</version>
+      	<executions>
+      	  <execution>
+      	  <phase>package</phase>
+      	  <goals>
+      	    <goal>shade</goal> 
+      	  </goals>
+      	  <configuration>
+            <transformers>
+              <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+              	<mainClass>com.kebabwarriors.fileindexer.Main</mainClass>
+                <manifestEntries>
+                  <Multi-Release>true</Multi-Release>
+                </manifestEntries>
+              </transformer>
+            </transformers>
+            <shadedArtifactAttached>true</shadedArtifactAttached>
+            <shadedClassifierName>launcher</shadedClassifierName>
+          </configuration>	
+          </execution>
+        </executions>
       </plugin>
       <plugin>
       	<groupId>org.apache.maven.plugins</groupId>
