@@ -1,30 +1,21 @@
-package com.kebabwarriors.file_indexer;
+package com.kebabwarriors.fileindexer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-public class FileIndexer {
+public final class Indexer {
   //This comes in this way [Path, name, extension, content]
   private ArrayList<String[]> documents = new ArrayList<String[]>();
 
   HashMap<String, String[]> documentsMap = new HashMap<String, String[]>();
   HashMap<String, HashMap<String[], Double[]>> indexedDocumentsMap = new HashMap<>();
-
-  /**
-   * 
-   * @param documents
-   */
-  public FileIndexer(ArrayList<String[]> documents){
+  
+  public Indexer(ArrayList<String[]> documents) {
     this.documents = documents;
     this.setHashMapDocuments(this.documents);
     this.indexDocuments(this.documentsMap);
   }
-
-  /**
-   * 
-   * @param documents
-   */
+  
   public void setHashMapDocuments(ArrayList<String[]> documents) {
     String[] newContent;
 
@@ -36,65 +27,44 @@ public class FileIndexer {
     }
   }
 
-  /**
-   * 
-   * @param documentName
-   * @param documentContent
-   */
   public void addToDocumentsMap(String documentName, String[] documentContent){
     this.documentsMap.put(documentName, documentContent);
   }
 
-
-  /**
-   * @param documents
-   */
   private void indexDocuments(HashMap<String, String[]> documents ){
     Double[] wordsValue;
     String[] documentsName = getDocumentsName(documents);
-
-    int iterator = 0, iteratorNames = 0;
+    int iterator = 0;
+    int iteratorNames = 0;
 
     for (String[] document : documents.values()) {
       wordsValue = new Double[document.length]; 
 
       for (String word : document) {
-        wordsValue[iterator] = MathProcedures.tfIdf(document, documents,word);
-        iterator++;
+        wordsValue[iterator] = Procedures.tfIdf(document, documents,word);
+        iterator += 1;
       }
 
       iterator = 0;
 
       this.addToIndexedDocumentsMap(documentsName[iteratorNames], document, wordsValue);
 
-      iteratorNames++;
+      iteratorNames += 1;
     }
   }
 
-  /**
-   * 
-   * @param documents
-   * @return
-   */
   public static String[] getDocumentsName(HashMap<String, String[]> documents) {
     String[] names = new String[documents.size()];
-
     int iterator = 0;
 
     for(String name : documents.keySet()) {
       names[iterator] = name;
-      iterator++;
+      iterator += 1;
     }
 
     return names;
   }
 
-  /**
-   * 
-   * @param document
-   * @param documentWords
-   * @param wordsValue
-   */
   private void addToIndexedDocumentsMap(String document, String[] documentWords, Double[] wordsValue) {
     HashMap<String[], Double[]> innerHash = new HashMap<String[], Double[]>();
 
@@ -103,10 +73,6 @@ public class FileIndexer {
     this.indexedDocumentsMap.put(document, innerHash);
   }
 
-  /**
-   * 
-   * @return
-   */
   public HashMap<String, HashMap<String[], Double[]>> getIndexedDocumentsMap(){
     return this.indexedDocumentsMap;
   }
