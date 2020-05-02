@@ -5,6 +5,8 @@ services:
     build:
       context: .
     working_dir: /opt/app/image/bin
+    ports:
+      - 25333:25333
     volumes:
       - ./documents:/home/app/documents/
     command: sh -c "./FileIndexer"
