@@ -33,7 +33,7 @@ public class DocumentReader {
         Main.logger.trace(
             "File " + fileEntry.getName() + " at " + fileEntry.getAbsolutePath() + " is a directory.");
         
-        readDocumentsPath(fileEntry);
+        this.readDocumentsPath(fileEntry);
       } else {
         Main.logger.trace(
             "File " + fileEntry.getName() + " at path " + fileEntry.getPath() + "is a document, adding to list.");
@@ -60,7 +60,7 @@ public class DocumentReader {
         Main.logger.trace(
             fileEntry.getName() + " at " + fileEntry.getAbsolutePath() + " is a directory.");
 
-        readDocumentsPath(fileEntry);
+        this.readDocumentsPath(fileEntry);
       } else {
         Main.logger.trace(
             fileEntry.getName() + " at " + fileEntry.getAbsolutePath() + " is a document, adding to list.");
