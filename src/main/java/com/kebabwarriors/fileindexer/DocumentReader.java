@@ -28,7 +28,7 @@ public class DocumentReader {
     
     Main.logger.debug("Reading documents from path " + path + ".");
     
-    for (final File fileEntry : folder.listFiles()) {
+    for (File fileEntry : folder.listFiles()) {
       if (fileEntry.isDirectory()) {
         Main.logger.trace(
             "File " + fileEntry.getName() + " at " + fileEntry.getAbsolutePath() + " is a directory.");
@@ -55,7 +55,7 @@ public class DocumentReader {
     Main.logger.debug(
         "Reading documents from directory " + folder.getName() + " at path " + folder.getAbsolutePath() + ".");
 
-    for (final File fileEntry : folder.listFiles())
+    for (File fileEntry : folder.listFiles())
       if (fileEntry.isDirectory()) {
         Main.logger.trace(
             fileEntry.getName() + " at " + fileEntry.getAbsolutePath() + " is a directory.");
