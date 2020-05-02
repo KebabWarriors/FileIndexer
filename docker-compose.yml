@@ -10,3 +10,4 @@ services:
     volumes:
       - ./documents:/home/app/documents/
     command: sh -c "./FileIndexer"
+    tty: true
