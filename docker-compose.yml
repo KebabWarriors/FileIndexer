@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  file-indexer:
+    build:
+      context: .
+    working_dir: /opt/app/image/bin
+    volumes:
+      - ./documents:/home/app/documents/
+    command: sh -c "./FileIndexer"

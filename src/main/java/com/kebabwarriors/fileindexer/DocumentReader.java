@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.poi.hwpf.HWPFDocument;
-import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -189,39 +187,7 @@ public class DocumentReader {
     return docText;
   }
 
-  /**
-   * 
-   * @param path
-   * @return
-   */
-  private String getDocTextContent(String path) {
-    String docText = "";
-
-    try {
-      File file = new File(path);
-      FileInputStream fis = new FileInputStream(file.getAbsolutePath());
-
-      HWPFDocument doc = new HWPFDocument(fis);
-      WordExtractor we = new WordExtractor(doc);
-      String[] paragraphs = we.getParagraphText();
-
-      for (String para : paragraphs)
-        docText += para.toString();
-
-      fis.close();
-      we.close();
-    } catch (Exception e) {
-      //logger.error(e);
-      e.printStackTrace();
-    }
-
-    return docText;
-  }
-
-  /**
-   * 
-   * @param path
-   * @return
+  /*
    * @throws IOException 
    */
   private String getPDFContent(String path) throws IOException {
