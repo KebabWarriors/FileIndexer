@@ -4,7 +4,7 @@ services:
   file-indexer:
     build:
       context: .
-    working_dir: /opt/app
+    working_dir: /opt/app/image/bin
     volumes:
       - ./documents:/home/app/documents/
-    command: sh -c "cd image && ./FileIndexer"
+    command: sh -c "./FileIndexer"
