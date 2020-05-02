@@ -83,3 +83,5 @@ nb-configuration.xml
 .DS_Store
 
 logs/
+documents/*
+!documents/.gitkeep
